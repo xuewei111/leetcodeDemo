@@ -8,17 +8,21 @@ public class main {
 //        [1,2,6,3,4,5,6]
 //        6
         int [] arr = new int[]{1,2,6,3,4,5,6};
-        ListNode head = new ListNode(1);
+        ListNode head = new ListNode();
+        // 保留头节点
+        ListNode copyHead = null;
 
         for (int i = 0; i < arr.length-1; i++) {
-            ListNode curListNode = new ListNode(++i);
+            ListNode curListNode = new ListNode();
 
             head.val = arr[i];
             head.next = curListNode;
-
+            if(i == 0) {
+                copyHead = head;
+            }
             head = curListNode;
         }
-        ListNode node = removeElements(head, 6);
+        ListNode node = removeElements(copyHead, 6);
         System.out.println(node.val);
 
     }
